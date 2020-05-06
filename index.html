@@ -1,18 +1,4 @@
-<?php
-	$con = mysqli_connect('localhost','root','','iwp');
-	if (!$con)
-	{
-		die("Connection failed:".mysqli_connect_error());
-	}
-	if ($_SERVER['REQUEST_METHOD'] == 'POST')
-	{
-		$sql = "insert into query(name,email,phno,msg) values(?,?,?,?)";
-		$stmt = mysqli_prepare($con,$sql);
-		$stmt->bind_param("ssis", $_POST['name'], $_POST['email'], $_POST['phone'], $_POST['message']);
-		$stmt->execute();
-		header("location: index.php");
-	}
- ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -86,7 +72,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								 <style>
 								 h1 {font-size: 32px} 
 								 </style>
-									<h1><a href="index.php">Lifecode Proteomics</a></h1>
+									<h1><a href="index.html">Lifecode Proteomics</a></h1>
 									<!-- <p class="pa"  style="color: white ">Your Vision,Our Innovation.</p>
 									 --><h3 class="heading-agileinfo" style = "color : white" ><span>Your Vision,Our Innovation.</span></h3>
 
@@ -98,7 +84,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<!-- Collect the nav links, forms, and other content for toggling -->
 							<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 							 <ul class="nav navbar-nav link-effect-4">
-								<li class="active first-list"><a href="index.php">Home</a></li>
+								<li class="active first-list"><a href="index.html">Home</a></li>
 								
 								<li><a href="#about" class="scroll">About</a></li>
 								
@@ -114,7 +100,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 								<li><a href="#book" class="scroll">Send Query</a></li>
 
-								<li><a href="alogin/adminlogin.php">Admin Login</a></li>
+								<li><a href="alogin/adminlogin.html">Admin Login</a></li>
 
 								<li><a href="#contact" class="scroll">Contact Us</a></li>
 							</ul>
