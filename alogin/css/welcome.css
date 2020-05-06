@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald:300,400,600,700');
+
+.button{
+   
+    font-family: "Gill Sans", sans-serif;
+}
+
+
+body
+{
+	font-family: 'Courier New', Courier, monospace;
+}
+
+table, tr, th 
+{
+	color: white;
+	border-collapse: collapse;
+	border: 2px solid white;
+	font-family: 'Oswald', sans-serif;
+
+}
+
+th, td
+{
+	padding: 10px;
+	font-family: 'Oswald', sans-serif;
+
+}
+
+h1
+{
+	color: white;
+	font-family: 'Oswald', sans-serif;
+
+}

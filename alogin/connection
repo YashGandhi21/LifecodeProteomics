@@ -1,0 +1,113 @@
+<?php
+		session_start();
+		$_SESSION['name'] = $_POST["userid"];
+		$name = $_SESSION['name'];	
+?>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<meta charset="utf-8">
+		<title>Administrator Homepage</title>
+		<link rel="stylesheet" href="css/welcome.css" type="text/css" media="all" />
+
+		<style>
+
+			
+			.button {
+			font-family: "Gill Sans", sans-serif;
+			background: none;
+			background-color: transparent;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			border: none;
+			color: #FFFFFF;
+			text-align: center;
+			font-size: 28px;
+			
+			transition: all 0.5s;
+			cursor: pointer;
+			margin: 25px 50px 75px 600px;
+			margin-left: 1400px;
+			outline: none;
+			}
+
+			.button span {
+			cursor: pointer;
+			display: inline-block;
+			position: relative;
+			transition: 0.5s;
+				
+			}
+
+			.button span:after {
+			content: '\00bb';
+			position: absolute;
+			opacity: 0;
+			top: 0;
+			right: -20px;
+			transition: 0.5s;
+			font-family:sans-serif;
+
+			}
+
+			.button:hover span {
+			padding-right: 25px;
+			}
+
+			.button:hover span:after {
+			opacity: 1;
+			right: 0;
+			}
+			
+		</style>
+
+  		
+	</head>
+
+	<body background="../images/231.jpg" link="#ffffff" ">
+
+	<a href='../index.php' >
+		<button class="button">
+			<span> HOMEPAGE </span>
+		</button>
+	</a>
+
+		
+		<h1><p>Welcome, <?php echo $name; ?></p></h1>
+		
+		<br>
+		<br>
+		<br>
+		
+		<?php
+			$con = mysqli_connect('localhost','root','','iwp');
+			$result = mysqli_query($con,"select * from query order by id desc");
+
+			echo "<table border='1'>
+		    <tr>
+		    <th>Query ID</font></th>
+		    <th>Customer Name</font></th>
+			<th>Customer Email</font></th>
+			<th>Customer Phone Number</font></th>
+			<th>Query</th>
+			<th>Operation</th>
+		    </tr>";
+
+		    while($row = mysqli_fetch_array($result))
+			{
+				echo "<tr style='text-align:center;'>";
+				echo "<td style='text-align:center;'>" . $row['id'] . "</td>";
+				echo "<td style='text-align:center;'>" . $row['name'] . "</td>";
+				echo "<td style='text-align:center;'>" . $row['email'] . "</td>";
+				echo "<td style='text-align:center;'>" . $row['phno'] . "</td>";
+				echo "<td style='text-align:center;'>" . $row['msg'] . "</td>";
+				echo "<td style='text-align:center;'><a href = 'delete.php?id=$row[id],name=$row[name],email=$row[email],phno=$row[phno],msg=$row[msg]' style='text-decoration:none;'>"."Delete"."</td>";
+				echo "</tr>";
+		    }
+
+			echo "</table>";
+
+		    mysqli_close($con);
+		?>
+	</body>
+</html>
